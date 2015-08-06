@@ -15,6 +15,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * a simple registeration form, contains a textView ( asks user if he wants to signIn or singUp ),
+ *                                          two buttons ( one for signIn and one for singUp )
+ *                                          two editText ( one for username and one for password )
+ * if user choose signUp, the app checks if the username is valid ( already taken or not - saved in sharedPreferences )
+ *      if it was invalid, a toast shows, and says its invalid.
+ *      if it was valid, a dialog shows, asks user if he wants to logIn or not.
+ *          if he choose cancel, nothing will happen.
+ *          if he choose logIn, he will logIn
+ * if user choose signIn, the app checks if the username and password he enters is valid ( checks from sharedPreferences )
+ *      if it was invalid, a toast shows that says username or password is wrong
+ *      if it was valid, the "showNameActivity" starts. which welcome to the user.
+ * @author alim & Dorna
+ * @version %I%,%G%
+ */
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 String username = userNameField.getText().toString();
                 String password = passwordField.getText().toString();
                 if (isValidUserAndPass(username, password)) {
-//                    Toast.makeText(MainActivity.this, R.string.sign_in_message, Toast.LENGTH_SHORT).show();
                     startShowNameActivity(username);
                 } else {
                     Toast.makeText(MainActivity.this, R.string.sign_in_message_fail, Toast.LENGTH_SHORT).show();
@@ -58,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * @param username username
+     * @param password  password
+     * @throws Exception if username exists
+     */
     private void registerUser(String username, String password) throws Exception{
         SharedPreferences shP = getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
         if (shP.contains(username))
@@ -67,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    /**
+     * 2 buttons: log-in and cancel
+     * @param username : if user clicks sign-in, starts another activity and show username
+     */
     private void showDialogMessageAfterSignUp(final String username){
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
@@ -88,12 +111,23 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    /**
+     * we've got an activity named ShowNameActivity, this method starts it,
+     * this activity show the username
+     * @param username username
+     */
     private void startShowNameActivity(String username){
         Intent intent = new Intent(MainActivity.this, showNameActivity.class);
         intent.putExtra(getString(R.string.usernameForShow), username);
         startActivity(intent);
     }
 
+    /**
+     *
+     * @param username username
+     * @param password password
+     * @return if username with this password exists
+     */
     private boolean isValidUserAndPass(String username, String password){
         SharedPreferences shP = getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
         if (!shP.contains(username))
