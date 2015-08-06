@@ -21,4 +21,8 @@
     <string name="invalid_pass">invalidPassword</string>
 
     <string name="usernameForShow">com.Android_Fegisteration_Form.MESSAGE</string>
+
+    <string name="dialog_message">if you want to sign in click sign in, else click cancel</string>
+    <string name="posetive_dialog_button">sign-in</string>
+    <string name="negative_dialog_button">cancel</string>
 </resources>

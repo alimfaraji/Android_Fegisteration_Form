@@ -1,6 +1,8 @@
 package com.example.hoco.android_fegisteration_form;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -14,15 +16,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private void registerUser(String username, String password) throws Exception{
-        SharedPreferences shP = getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
-        if (shP.contains(username))
-            throw new Exception();
-        SharedPreferences.Editor editor = shP.edit();
-        editor.putString(username, password);
-        editor.commit();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
                 String username = userNameField.getText().toString();
                 String password = passwordField.getText().toString();
                 try {
-                    registerUser( username, password);
+                    registerUser(username, password);
+                    showDialogMessageAfterSignUp(username);
                     Toast.makeText(MainActivity.this, R.string.sign_up_message, Toast.LENGTH_SHORT).show();
-                }catch (Exception e){
+                } catch (Exception e) {
                     Toast.makeText(MainActivity.this, R.string.sign_up_message_fail, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -54,11 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 String username = userNameField.getText().toString();
                 String password = passwordField.getText().toString();
                 if (isValidUserAndPass(username, password)) {
-                    Toast.makeText(MainActivity.this, R.string.sign_in_message, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, showNameActivity.class);
-                    intent.putExtra(getString(R.string.usernameForShow), username);
-                    MainActivity.this.startActivity(intent);
-
+//                    Toast.makeText(MainActivity.this, R.string.sign_in_message, Toast.LENGTH_SHORT).show();
+                    startShowNameActivity(username);
                 } else {
                     Toast.makeText(MainActivity.this, R.string.sign_in_message_fail, Toast.LENGTH_SHORT).show();
                 }
@@ -67,17 +58,50 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void registerUser(String username, String password) throws Exception{
+        SharedPreferences shP = getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
+        if (shP.contains(username))
+            throw new Exception();
+        SharedPreferences.Editor editor = shP.edit();
+        editor.putString(username, password);
+        editor.commit();
+    }
+
+    private void showDialogMessageAfterSignUp(final String username){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+        builder.setPositiveButton(R.string.posetive_dialog_button, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                startShowNameActivity(username);
+            }
+        });
+
+        builder.setNegativeButton(R.string.negative_dialog_button, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //nothing to do
+            }
+        });
+
+        builder.setMessage(R.string.dialog_message);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void startShowNameActivity(String username){
+        Intent intent = new Intent(MainActivity.this, showNameActivity.class);
+        intent.putExtra(getString(R.string.usernameForShow), username);
+        startActivity(intent);
+    }
+
     private boolean isValidUserAndPass(String username, String password){
         SharedPreferences shP = getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
         if (!shP.contains(username))
             return false;
         String rightPassword = shP.getString(username, getString(R.string.invalid_pass));
-        Log.d("right password is : ", rightPassword);
-        Log.d("and you typed : ", password);
-        if (rightPassword.equals(password)){
-            return true;
-        }
-        return false;
+//        Log.d("right password is : ", rightPassword);
+//        Log.d("and you typed : ", password);
+        return rightPassword.equals(password);
     }
 
     @Override
