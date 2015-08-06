@@ -55,8 +55,10 @@ public class MainActivity extends AppCompatActivity {
                 String password = passwordField.getText().toString();
                 if (isValidUserAndPass(username, password)) {
                     Toast.makeText(MainActivity.this, R.string.sign_in_message, Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(this, showNameActivity.class);
-//                    MainActivity.this.startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this, showNameActivity.class);
+                    intent.putExtra(getString(R.string.usernameForShow), username);
+                    MainActivity.this.startActivity(intent);
+
                 } else {
                     Toast.makeText(MainActivity.this, R.string.sign_in_message_fail, Toast.LENGTH_SHORT).show();
                 }

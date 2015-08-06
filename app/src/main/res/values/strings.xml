@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android_Fegisteration_Form</string>
+    <string name="app_name">Android_Registeration_Form</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -19,4 +19,6 @@
     <string name="pref_name">com.Android_Fegisteration_Form.preference_file_key</string>
 
     <string name="invalid_pass">invalidPassword</string>
+
+    <string name="usernameForShow">com.Android_Fegisteration_Form.MESSAGE</string>
 </resources>
