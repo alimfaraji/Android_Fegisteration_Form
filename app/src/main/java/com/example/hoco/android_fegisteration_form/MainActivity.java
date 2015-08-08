@@ -16,9 +16,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * a simple registeration form, contains a textView ( asks user if he wants to signIn or singUp ),
- *                                          two buttons ( one for signIn and one for singUp )
- *                                          two editText ( one for username and one for password )
+ * a simple registration form, contains a textView ( asks user if he wants to signIn or singUp ),
+ *                                        two buttons ( one for signIn and one for singUp )
+ *                                        two editTexts ( one for username and one for password )
  * if user choose signUp, the app checks if the username is valid ( already taken or not - saved in sharedPreferences )
  *      if it was invalid, a toast shows, and says its invalid.
  *      if it was valid, a dialog shows, asks user if he wants to logIn or not.

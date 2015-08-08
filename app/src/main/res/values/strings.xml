@@ -25,4 +25,6 @@
     <string name="dialog_message">if you want to sign in click sign in, else click cancel</string>
     <string name="posetive_dialog_button">sign-in</string>
     <string name="negative_dialog_button">cancel</string>
+
+    <string name="passwordHint">type password here</string>
 </resources>
