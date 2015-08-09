@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 String username = userNameField.getText().toString();
                 String password = passwordField.getText().toString();
                 if (isValidUserAndPass(username, password)) {
+                    updateLastLogin(username);
                     startShowNameActivity(username);
                 } else {
                     Toast.makeText(MainActivity.this, R.string.sign_in_message_fail, Toast.LENGTH_SHORT).show();
@@ -98,6 +99,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void updateLastLogin(String username){
+        SharedPreferences shP = getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = shP.edit();
+        editor.putLong(getString(R.string.login_time) + ":" + username, System.currentTimeMillis());
     }
 
     /**
@@ -114,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         if (!isPasswordValid(password))
             throw new PasswordInvalidException();
         SharedPreferences.Editor editor = shP.edit();
-        editor.putString(username, password);
+        editor.putString(getString(R.string.username) + ":" + username, password);
         editor.commit();
     }
 
@@ -172,9 +179,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private boolean isValidUserAndPass(String username, String password){
         SharedPreferences shP = getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
-        if (!shP.contains(username))
+        if (!shP.contains( getString(R.string.username) + ":" + username))
             return false;
-        String rightPassword = shP.getString(username, getString(R.string.invalid_pass));
+        String rightPassword = shP.getString(getString(R.string.username) + ":" + username, getString(R.string.invalid_pass));
 //        Log.d("right password is : ", rightPassword);
 //        Log.d("and you typed : ", password);
         return rightPassword.equals(password);

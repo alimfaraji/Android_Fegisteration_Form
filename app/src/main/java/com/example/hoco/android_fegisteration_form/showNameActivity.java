@@ -1,6 +1,8 @@
 package com.example.hoco.android_fegisteration_form;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +10,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class showNameActivity extends AppCompatActivity {
+    /**
+     * user will sign out after this amount of time
+     */
+    static final int showNameActivity_TIME_OUT = 10000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +24,24 @@ public class showNameActivity extends AppCompatActivity {
 
         TextView showMessage = (TextView)findViewById(R.id.logedInMessage);
         showMessage.setText(message + " you have logged in");
+
+        final TextView timeLeft = (TextView)findViewById(R.id.timeLeft);
+        new CountDownTimer(showNameActivity_TIME_OUT, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                timeLeft.setText("seconds remaining: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                timeLeft.setText("done!");
+                Intent intent = new Intent(showNameActivity.this, MainActivity.class);
+                startActivity(intent);
+
+                // close this activity
+                finish();
+            }
+        }.start();
+
 
     }
 
