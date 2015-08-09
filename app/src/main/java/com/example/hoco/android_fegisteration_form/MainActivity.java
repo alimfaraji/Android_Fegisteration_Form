@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
+import com.example.hoco.android_fegisteration_form.exceptions.PasswordInvalidException;
+import com.example.hoco.android_fegisteration_form.exceptions.UsernameExistsException;
+import com.example.hoco.android_fegisteration_form.exceptions.UsernameInvalidException;
 
 /**
  * a simple registration form, contains a textView ( asks user if he wants to signIn or singUp ),
@@ -36,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.main_toolbar);
+//        setSupportActionBar(toolbar);
+
         final EditText userNameField = (EditText)findViewById(R.id.username_field);
 
         final EditText passwordField = (EditText)findViewById(R.id.password_field);
@@ -50,12 +59,31 @@ public class MainActivity extends AppCompatActivity {
                     registerUser(username, password);
                     showDialogMessageAfterSignUp(username);
                     Toast.makeText(MainActivity.this, R.string.sign_up_message, Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    Toast.makeText(MainActivity.this, R.string.sign_up_message_fail, Toast.LENGTH_SHORT).show();
+                } catch (PasswordInvalidException e) {
+//                    Toast.makeText(MainActivity.this, R.string.sign_up_message_fail, Toast.LENGTH_SHORT).show();
+                    passwordField.setError("password should contain at least 6 letters");
+
+                    passwordField.setText(null);
+
+                    passwordField.setHint("invalid password");
+                    passwordField.setHintTextColor(Color.RED);
+                } catch (UsernameInvalidException e){
+                    userNameField.setError("username invalid");
+                } catch (UsernameExistsException e){
+                    userNameField.setError("username exists, try another one");
+
+                    userNameField.setText(null);
+                    passwordField.setText(null);
+
+                    userNameField.setHint("username");
+                    passwordField.setHint("password");
+
+                    userNameField.setHintTextColor(Color.RED);
                 }
             }
         });
 
+        //TODO : enhance
         Button signInButton = (Button)findViewById(R.id.sign_in);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,13 +105,27 @@ public class MainActivity extends AppCompatActivity {
      * @param password  password
      * @throws Exception if username exists
      */
-    private void registerUser(String username, String password) throws Exception{
+    private void registerUser(String username, String password) throws UsernameExistsException, UsernameInvalidException, PasswordInvalidException{
         SharedPreferences shP = getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
         if (shP.contains(username))
-            throw new Exception();
+            throw new UsernameExistsException();
+        if (!isUsernameValid(username))
+            throw new UsernameInvalidException();
+        if (!isPasswordValid(password))
+            throw new PasswordInvalidException();
         SharedPreferences.Editor editor = shP.edit();
         editor.putString(username, password);
         editor.commit();
+    }
+
+    private boolean isUsernameValid(String username){
+        return true;
+    }
+
+    private boolean isPasswordValid(String password){
+        if(password == null )
+            return false;
+        return password.length() >= 6;
     }
 
     /**
