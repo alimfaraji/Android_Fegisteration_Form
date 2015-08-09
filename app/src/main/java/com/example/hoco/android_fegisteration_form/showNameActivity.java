@@ -19,6 +19,10 @@ public class showNameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_name);
+
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+
         Intent intent = getIntent();
         String message = intent.getStringExtra(getString(R.string.usernameForShow));
 

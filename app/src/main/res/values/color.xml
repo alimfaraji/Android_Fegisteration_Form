@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<resources>-->
+    <!--<span style="font-size: x-small;"><?xml version="1.0" encoding="utf-8"?>-->
+        <resources>
+            <color name="ColorPrimary">#8964ff</color>
+            <color name="ColorPrimaryDark">#211d9c</color>
+        </resources>
+
+    <!--</span>-->
+<!--</resources>-->

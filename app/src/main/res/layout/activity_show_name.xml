@@ -7,6 +7,12 @@
     tools:context="com.example.hoco.android_fegisteration_form.showNameActivity"
     android:background="#ffffff">
 
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+        ></include>
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
