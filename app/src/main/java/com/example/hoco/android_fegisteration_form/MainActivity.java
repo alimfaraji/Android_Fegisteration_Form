@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void registerUser(String username, String password) throws UsernameExistsException, UsernameInvalidException, PasswordInvalidException{
         SharedPreferences shP = getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
-        if (shP.contains(username))
+        if (shP.contains( getString(R.string.username) + ":" + username))
             throw new UsernameExistsException();
         if (!isUsernameValid(username))
             throw new UsernameInvalidException();
