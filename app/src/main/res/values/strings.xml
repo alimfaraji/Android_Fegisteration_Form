@@ -3,7 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_question">what do you want to do?</string>
+    <string name="title_question">Hi, please fill the fields, if you have not sign up yet, click sign up</string>
     <string name="sign_in">sign in</string>
     <string name="sign_up">sign up</string>
     <string name="password">password</string>
