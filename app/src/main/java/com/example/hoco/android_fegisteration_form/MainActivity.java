@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -49,39 +50,48 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText passwordField = (EditText)findViewById(R.id.password_field);
 
-        Button signUpButton = (Button)findViewById(R.id.sign_up);
-        signUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        TextView signUp = (TextView)findViewById(R.id.sign_up_main_activity);
+        signUp.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
                 String username = userNameField.getText().toString();
                 String password = passwordField.getText().toString();
-                try {
-                    registerUser(username, password);
-                    showDialogMessageAfterSignUp(username);
-                    Toast.makeText(MainActivity.this, R.string.sign_up_message, Toast.LENGTH_SHORT).show();
-                } catch (PasswordInvalidException e) {
-//                    Toast.makeText(MainActivity.this, R.string.sign_up_message_fail, Toast.LENGTH_SHORT).show();
-                    passwordField.setError("password should contain at least 6 letters");
-
-                    passwordField.setText(null);
-
-                    passwordField.setHint("invalid password");
-                    passwordField.setHintTextColor(Color.RED);
-                } catch (UsernameInvalidException e){
-                    userNameField.setError("username invalid");
-                } catch (UsernameExistsException e){
-                    userNameField.setError("username exists, try another one");
-
-                    userNameField.setText(null);
-                    passwordField.setText(null);
-
-                    userNameField.setHint("username");
-                    passwordField.setHint("password");
-
-                    userNameField.setHintTextColor(Color.RED);
-                }
+                goToSignUpActivity(username, password);
             }
         });
+
+//        Button signUpButton = (Button)findViewById(R.id.sign_up);
+//        signUpButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String username = userNameField.getText().toString();
+//                String password = passwordField.getText().toString();
+//                try {
+//                    registerUser(username, password);
+//                    showDialogMessageAfterSignUp(username);
+//                    Toast.makeText(MainActivity.this, R.string.sign_up_message, Toast.LENGTH_SHORT).show();
+//                } catch (PasswordInvalidException e) {
+////                    Toast.makeText(MainActivity.this, R.string.sign_up_message_fail, Toast.LENGTH_SHORT).show();
+//                    passwordField.setError("password should contain at least 6 letters");
+//
+//                    passwordField.setText(null);
+//
+//                    passwordField.setHint("invalid password");
+//                    passwordField.setHintTextColor(Color.RED);
+//                } catch (UsernameInvalidException e){
+//                    userNameField.setError("username invalid");
+//                } catch (UsernameExistsException e){
+//                    userNameField.setError("username exists, try another one");
+//
+//                    userNameField.setText(null);
+//                    passwordField.setText(null);
+//
+//                    userNameField.setHint("username");
+//                    passwordField.setHint("password");
+//
+//                    userNameField.setHintTextColor(Color.RED);
+//                }
+//            }
+//        });
 
         //TODO : enhance
         Button signInButton = (Button)findViewById(R.id.sign_in);
@@ -90,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String username = userNameField.getText().toString();
                 String password = passwordField.getText().toString();
-                if (isValidUserAndPass(username, password)) {
+                if (isValidUserAndPassForSignIn(username, password)) {
                     updateLastLogin(username);
                     startShowNameActivity(username);
                 } else {
@@ -99,6 +109,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void goToSignUpActivity(String username, String password){
+        Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+        intent.putExtra(getString(R.string.username), username);
+        intent.putExtra(getString(R.string.password), password);
+        startActivity(intent);
     }
 
     private void updateLastLogin(String username){
@@ -125,11 +142,11 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
-    private boolean isUsernameValid(String username){
+    public static boolean isUsernameValid(String username){
         return true;
     }
 
-    private boolean isPasswordValid(String password){
+    public static boolean isPasswordValid(String password){
         if(password == null )
             return false;
         return password.length() >= 6;
@@ -177,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
      * @param password password
      * @return if username with this password exists
      */
-    private boolean isValidUserAndPass(String username, String password){
+    private boolean isValidUserAndPassForSignIn(String username, String password){
         SharedPreferences shP = getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
         if (!shP.contains( getString(R.string.username) + ":" + username))
             return false;
