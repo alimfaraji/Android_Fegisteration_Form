@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void startShowNameActivity(String username){
         Intent intent = new Intent(MainActivity.this, showNameActivity.class);
-        intent.putExtra(getString(R.string.usernameForShow), username);
+        intent.putExtra(getString(R.string.logedInUsername), username);
         startActivity(intent);
     }
 

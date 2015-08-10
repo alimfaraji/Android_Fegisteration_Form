@@ -17,10 +17,11 @@
     <string name="title_activity_show_name">showNameActivity</string>
 
     <string name="pref_name">com.Android_Fegisteration_Form.preference_file_key</string>
+    <string name="pref_profile">com.Android_Fegisteration_Form.pref_profile</string>
 
     <string name="invalid_pass">invalidPassword</string>
 
-    <string name="usernameForShow">com.Android_Fegisteration_Form.MESSAGE</string>
+    <string name="logedInUsername">com.Android_Fegisteration_Form.MESSAGE</string>
 
     <string name="dialog_message">if you want to sign in click sign in, else click cancel</string>
     <string name="posetive_dialog_button">sign-in</string>
@@ -30,4 +31,8 @@
     <string name="title_activity_splash_screen">SplashScreenActivity</string>
 
     <string name="login_time">login_time</string>
+    <string name="title_activity_show_profile">ShowProfileActivity</string>
+    <string name="title_activity_edit_profile">EditProfileActivity</string>
+
+    <string name="noProfileToShow">your profile is empty</string>
 </resources>

@@ -7,14 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class showNameActivity extends AppCompatActivity {
     /**
      * user will sign out after this amount of time
      */
-    static final int showNameActivity_TIME_OUT = 10000;
-
+    static final int showNameActivity_TIME_OUT = 60000 * 2;
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,10 +25,10 @@ public class showNameActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(getString(R.string.usernameForShow));
+        username = intent.getStringExtra(getString(R.string.logedInUsername));
 
         TextView showMessage = (TextView)findViewById(R.id.logedInMessage);
-        showMessage.setText(message + " you have logged in");
+        showMessage.setText(username + " you have logged in");
 
         final TextView timeLeft = (TextView)findViewById(R.id.timeLeft);
         new CountDownTimer(showNameActivity_TIME_OUT, 1000) {
@@ -46,7 +47,18 @@ public class showNameActivity extends AppCompatActivity {
             }
         }.start();
 
+    }
 
+    public void goToShowProfileActivity(View view) {
+        Intent intent = new Intent(showNameActivity.this, ShowProfileActivity.class);
+        intent.putExtra(getString(R.string.logedInUsername), username);
+        startActivity(intent);
+    }
+
+    public void goToEditProfileActivity(View view){
+        Intent intent = new Intent(showNameActivity.this, EditProfileActivity.class);
+        intent.putExtra(getString(R.string.logedInUsername), username);
+        startActivity(intent);
     }
 
     @Override
