@@ -5,4 +5,8 @@
     android:background="@color/ColorPrimary"
     >
 
+    <include
+        android:id="@id/timeLeft"
+        layout="@layout/countdown_counter">
+    </include>
 </android.support.v7.widget.Toolbar>

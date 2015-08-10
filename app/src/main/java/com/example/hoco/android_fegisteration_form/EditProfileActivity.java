@@ -17,6 +17,10 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+
         Intent intent = getIntent();
         username = intent.getStringExtra(getString(R.string.logedInUsername));
         editProfile = (EditText)findViewById(R.id.edit_profile_field);

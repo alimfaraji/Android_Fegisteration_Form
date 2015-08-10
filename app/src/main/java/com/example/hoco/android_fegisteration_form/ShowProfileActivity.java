@@ -16,6 +16,9 @@ public class ShowProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_profile);
 
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+
         Intent intent = getIntent();
         String username = intent.getStringExtra(getString(R.string.logedInUsername));
 //        Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
@@ -26,6 +29,7 @@ public class ShowProfileActivity extends AppCompatActivity {
         String s = shP.getString(username, getString(R.string.noProfileToShow));
 
         profileText.setText(s);
+
     }
 
     @Override
