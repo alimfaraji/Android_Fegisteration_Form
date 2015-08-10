@@ -50,8 +50,18 @@
         android:layout_height="wrap_content"
         android:text="Edit Profile"
         android:id="@+id/edit_profile_button"
-        android:layout_toLeftOf="@+id/timeLeft"
-        android:layout_toStartOf="@+id/timeLeft"
-        android:layout_alignBottom="@+id/show_profile_button"
-        android:onClick="goToEditProfileActivity"/>
+        android:onClick="goToEditProfileActivity"
+        android:layout_alignTop="@+id/show_profile_button"
+        android:layout_toRightOf="@+id/show_profile_button"
+        android:layout_toEndOf="@+id/show_profile_button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QR button"
+        android:id="@+id/QR_button"
+        android:layout_below="@+id/show_profile_button"
+        android:layout_alignRight="@+id/edit_profile_button"
+        android:onClick="QROnClick"
+        android:layout_alignEnd="@+id/edit_profile_button" />
 </RelativeLayout>

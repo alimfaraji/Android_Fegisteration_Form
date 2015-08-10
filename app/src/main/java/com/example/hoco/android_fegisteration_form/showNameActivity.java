@@ -61,6 +61,29 @@ public class showNameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void QROnClick(View view){
+        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+
+        // This flag clears the called app from the activity stack, so users arrive in the expected
+        // place next time this application is restarted.
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+
+        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+        startActivityForResult(intent, 0);
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                //  The Intents Fairy has delivered us some data!
+                String contents = intent.getStringExtra("SCAN_RESULT");
+                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+                // Handle successful scan
+            } else if (resultCode == RESULT_CANCELED) {
+                // Handle cancel
+            }
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
