@@ -1,42 +1,87 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="0dp"
-    android:paddingRight="0dp"
-    android:paddingTop="0dp"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.hoco.android_fegisteration_form.EditProfileActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="#ffffff">
 
     <include
         android:id="@+id/tool_bar"
-        layout="@layout/tool_bar">
-    </include>
+        layout="@layout/tool_bar"
+        ></include>
 
-
-    <TextView android:text="edit your profile" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_profile_title"
-        android:layout_below="@+id/tool_bar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/edit_profile_field"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:weightSum="1"
+        android:background="#ffffff">
 
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/edit_profile_title"
-        android:layout_above="@+id/saveProfile" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="edit your profile"
+            android:textSize="30dp"
+            android:id="@+id/create_profile_message"
+            android:layout_gravity="center_horizontal" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="save profile"
-        android:id="@+id/saveProfile"
-        android:onClick="saveAndGoToShowProfileActivity"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="167dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="first name*"
+            android:ems="10"
+            android:id="@+id/first_name_sign_up"
+            android:layout_gravity="center_horizontal" />
 
-</RelativeLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="last name*"
+            android:ems="10"
+            android:id="@+id/last_name_sign_up"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="email address*"
+            android:ems="10"
+            android:id="@+id/email_address_sign_up"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:hint="phone number"
+            android:id="@+id/phone_number_sign_up"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:hint="birthday"
+            android:id="@+id/birthday_sign_up"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_profile"
+            android:id="@+id/sign_up_button_sign_up"
+            android:onClick="signUpAndLeaveThisActivity"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -36,4 +36,5 @@
 
     <string name="noProfileToShow">your profile is empty</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="edit_profile">save changes</string>
 </resources>

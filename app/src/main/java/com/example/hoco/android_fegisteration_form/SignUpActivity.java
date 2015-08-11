@@ -128,39 +128,39 @@ public class SignUpActivity extends AppCompatActivity {
         editor.commit();
     }
 
-    private boolean isValidBirthday(String s) {
+    public static boolean isValidBirthday(String s) {
         return true;
     }
 
-    private boolean isValidPhoneNumber(String s) {
+    public static boolean isValidPhoneNumber(String s) {
         return true;
     }
 
-    private boolean isValidEmailAddress(String s) {
+    public static boolean isValidEmailAddress(String s) {
         if ( s== null || s == "" || s.length()<1)
             return false;
         return true;
     }
 
-    private boolean isValidLastName(String s) {
+    public static boolean isValidLastName(String s) {
         if ( s== null || s == "" || s.length()<1)
             return false;
         return true;
     }
 
-    private boolean isValidFirstName(String s) {
+    public static boolean isValidFirstName(String s) {
         if ( s == null || s == "" || s.length() < 1)
             return false;
         return true;
     }
 
-    private boolean isValidUsername(String username){
+    public static boolean isValidUsername(String username){
         if (username == null || username == "" || username.length()<1)
             return false;
         return true;
     }
 
-    private boolean isValidPassword(String password){
+    public static boolean isValidPassword(String password){
         if(password == null )
             return false;
         return password.length() >= 6;
