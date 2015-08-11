@@ -96,6 +96,7 @@
         android:layout_height="wrap_content"
         android:text="@string/sign_up"
         android:id="@+id/sign_up_button_sign_up"
+        android:onClick="signUpAndLeaveThisActivity"
         android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
