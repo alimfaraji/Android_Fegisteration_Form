@@ -149,6 +149,16 @@ public class showNameActivity extends Activity {
                     case 1:
                         detail = new ShowProfileFragment();
                         break;
+                    case 2:
+                        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+
+        // This flag clears the called app from the activity stack, so users arrive in the expected
+        // place next time this application is restarted.
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+
+        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+        startActivityForResult(intent, 0);
+                        break;
                     default:
                         detail = new ShowProfileFragment();
                 }
@@ -160,6 +170,7 @@ public class showNameActivity extends Activity {
 
         });
 
+
         Bundle args = new Bundle();
         args.putString("Menu", menu[1]);
         Fragment detail = new ShowProfileFragment();
@@ -168,6 +179,18 @@ public class showNameActivity extends Activity {
         fragmentManager.beginTransaction().replace(R.id.content_frame, detail).commit();
 
 
+    }
+        public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                //  The Intents Fairy has delivered us some data!
+                String contents = intent.getStringExtra("SCAN_RESULT");
+                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+                // Handle successful scan
+            } else if (resultCode == RESULT_CANCELED) {
+                // Handle cancel
+            }
+        }
     }
 
 }
