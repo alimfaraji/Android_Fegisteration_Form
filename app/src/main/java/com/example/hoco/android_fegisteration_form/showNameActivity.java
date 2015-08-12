@@ -122,12 +122,7 @@ public class showNameActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_profile);
-//        Bundle args = new Bundle();
-//        args.putString("Menu", menu[1]);
-//        Fragment detail = new DetailFragment();
-//        detail.setArguments(args);
-//        FragmentManager fragmentManager = getFragmentManager();
-//        fragmentManager.beginTransaction().replace(R.id.content_frame, detail).commit();
+
 
         menu = new String[]{"Edit Profile","Show Profile","QR code","Contact Us"};
         dLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -155,6 +150,12 @@ public class showNameActivity extends Activity {
             }
 
         });
+        Bundle args = new Bundle();
+        args.putString("Menu", menu[1]);
+        Fragment detail = new DetailFragment();
+        detail.setArguments(args);
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, detail).commit();
 
 
     }
