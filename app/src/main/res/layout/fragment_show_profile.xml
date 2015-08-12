@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical"
+android:weightSum="1"
+android:background="#ffffff">
+
+    <LinearLayout
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_gravity="center_horizontal">
+
+
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="Profile page"
+android:id="@+id/profile_title_profile_page"
+android:layout_gravity="center_horizontal" />
+
+<LinearLayout
+android:orientation="horizontal"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="5dp">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:gravity="center_horizontal"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="firstname : "
+android:layout_weight=".5"
+android:id="@+id/firstname_title_profile_page" />
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="name"
+android:layout_weight=".5"
+android:id="@+id/firstname_field_profile_page" />
+</LinearLayout>
+
+<LinearLayout
+android:orientation="horizontal"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="5dp">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:gravity="center_horizontal"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="lastname : "
+android:layout_weight=".5"
+android:id="@+id/lastname_title_profile_page" />
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="lastname"
+android:layout_weight=".5"
+android:id="@+id/lastname_field_profile_page" />
+</LinearLayout>
+
+<LinearLayout
+android:orientation="horizontal"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="5dp">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:gravity="center_horizontal"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="username : "
+android:layout_weight=".5"
+android:id="@+id/username_title_profile_page" />
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="username"
+android:layout_weight=".5"
+android:id="@+id/username_field_profile_page" />
+</LinearLayout>
+
+<LinearLayout
+android:orientation="horizontal"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="5dp">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:gravity="center_horizontal"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="emailAddress : "
+android:layout_weight=".5"
+android:id="@+id/emailAddress_title_profile_page" />
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="email"
+android:layout_weight=".5"
+android:id="@+id/emailAddress_field_profile_page" />
+</LinearLayout>
+
+<LinearLayout
+android:orientation="horizontal"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="5dp">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:gravity="center_horizontal"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="phone number : "
+android:layout_weight=".5"
+android:id="@+id/phone_number_title_profile_page" />
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="phone number"
+android:layout_weight=".5"
+android:id="@+id/phone_number_field_profile_page" />
+</LinearLayout>
+
+<LinearLayout
+android:orientation="horizontal"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="5dp">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:gravity="center_horizontal"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="birthday : "
+android:layout_weight=".5"
+android:id="@+id/birthday_title_profile_page" />
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="birthday"
+android:layout_weight=".5"
+android:id="@+id/birthday_field_profile_page" />
+</LinearLayout>
+
+
+</LinearLayout>
+
+
+</LinearLayout>

@@ -24,25 +24,25 @@ import junit.framework.Test;
 import org.w3c.dom.Text;
 
 public class ShowProfileActivity extends Activity {
-//    TextView firstNameField, lastNameField, emailAddressField, phoneNumberField, birthdayField, usernameField;
-//    Member member = new Member();
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_show_profile);
-//
+    TextView firstNameField, lastNameField, emailAddressField, phoneNumberField, birthdayField, usernameField;
+    Member member = new Member();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_show_profile);
+
 //        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.tool_bar);
 //        setSupportActionBar(toolbar);
-//
-//        Intent intent = getIntent();
-//        String username = intent.getStringExtra(getString(R.string.logedInUsername));
-////        Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
-//
-////        TextView profileText = (TextView)findViewById(R.id.profile_string);
-//
-//        SharedPreferences shP = getSharedPreferences(getString(R.string.pref_profile), MODE_PRIVATE);
-//        String s = shP.getString(username, getString(R.string.noProfileToShow));
-//
+
+        Intent intent = getIntent();
+        String username = intent.getStringExtra(getString(R.string.logedInUsername));
+//        Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
+
+//        TextView profileText = (TextView)findViewById(R.id.profile_string);
+
+        SharedPreferences shP = getSharedPreferences(getString(R.string.pref_profile), MODE_PRIVATE);
+        String s = shP.getString(username, getString(R.string.noProfileToShow));
+
 //        member = Member.getMemberFromCode(s);
 //
 //        usernameField = (TextView)findViewById(R.id.username_field_profile_page);
@@ -62,66 +62,66 @@ public class ShowProfileActivity extends Activity {
 //
 //        birthdayField = (TextView)findViewById(R.id.birthday_field_profile_page);
 //        birthdayField.setText(member.getBirthday());
-//
-//    }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_show_profile, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-String[] menu;
-    DrawerLayout dLayout;
-    ListView dList;
-    ArrayAdapter<String> adapter;
+
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_profile);
-
-
-        menu = new String[]{"Edit Profile","Show Profile","QR code","Contact Us"};
-        dLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        dList = (ListView) findViewById(R.id.left_drawer);
-
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu);
-
-        dList.setAdapter(adapter);
-        dList.setSelector(android.R.color.holo_blue_dark);
-
-        dList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
-            @Override
-            @TargetApi(11)
-            public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
-
-                dLayout.closeDrawers();
-                Bundle args = new Bundle();
-                args.putString("Menu", menu[position]);
-                Fragment detail = new DetailFragment();
-                detail.setArguments(args);
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, detail).commit();
-
-            }
-
-        });
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_show_profile, menu);
+        return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+//String[] menu;
+//    DrawerLayout dLayout;
+//    ListView dList;
+//    ArrayAdapter<String> adapter;
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_show_profile);
+//
+//
+//        menu = new String[]{"Edit Profile","Show Profile","QR code","Contact Us"};
+//        dLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        dList = (ListView) findViewById(R.id.left_drawer);
+//
+//        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu);
+//
+//        dList.setAdapter(adapter);
+//        dList.setSelector(android.R.color.holo_blue_dark);
+//
+//        dList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+//
+//            @Override
+//            @TargetApi(11)
+//            public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
+//
+//                dLayout.closeDrawers();
+//                Bundle args = new Bundle();
+//                args.putString("Menu", menu[position]);
+//                Fragment detail = new DetailFragment();
+//                detail.setArguments(args);
+//                FragmentManager fragmentManager = getFragmentManager();
+//                fragmentManager.beginTransaction().replace(R.id.content_frame, detail).commit();
+//
+//            }
+//
+//        });
+//    }
 }

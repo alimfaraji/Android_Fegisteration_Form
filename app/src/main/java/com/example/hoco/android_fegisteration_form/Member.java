@@ -84,7 +84,7 @@ public class Member {
 
     public String generateCode(){
         return username + "," + password + "," + firstname + "," + lastname + "," + emailAddress + "," + phoneNumber
-                + "," + birthday;
+                + " , " + birthday;
     }
 
     static public Member getMemberFromCode(String code){

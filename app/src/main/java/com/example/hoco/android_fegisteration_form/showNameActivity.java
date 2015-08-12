@@ -121,8 +121,7 @@ public class showNameActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_profile);
-
+        setContentView(R.layout.activity_show_name);
 
         menu = new String[]{"Edit Profile","Show Profile","QR code","Contact Us"};
         dLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -133,7 +132,7 @@ public class showNameActivity extends Activity {
         dList.setAdapter(adapter);
         dList.setSelector(android.R.color.holo_blue_dark);
 
-        dList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        dList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             @TargetApi(11)
@@ -142,7 +141,7 @@ public class showNameActivity extends Activity {
                 dLayout.closeDrawers();
                 Bundle args = new Bundle();
                 args.putString("Menu", menu[position]);
-                Fragment detail = new DetailFragment();
+                Fragment detail = new ShowProfileFragment();
                 detail.setArguments(args);
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.content_frame, detail).commit();
@@ -150,9 +149,10 @@ public class showNameActivity extends Activity {
             }
 
         });
+
         Bundle args = new Bundle();
         args.putString("Menu", menu[1]);
-        Fragment detail = new DetailFragment();
+        Fragment detail = new ShowProfileFragment();
         detail.setArguments(args);
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, detail).commit();
