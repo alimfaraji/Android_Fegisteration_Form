@@ -5,22 +5,27 @@ android:layout_width="match_parent"
 android:layout_height="fill_parent"
 android:orientation="vertical"
 android:weightSum="1"
-android:background="#ffffff">
+android:background="#ff4398c5">
 
     <LinearLayout
 android:orientation="vertical"
 android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:layout_gravity="center_horizontal">
+android:layout_height="match_parent">
 
 
-<TextView
+        <TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:textAppearance="?android:attr/textAppearanceLarge"
 android:text="Profile page"
 android:id="@+id/profile_title_profile_page"
-android:layout_gravity="center_horizontal" />
+android:layout_gravity="left|center_horizontal"
+    android:textColor="#FFFFFF"
+            android:textSize="30dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="40dp" />
 
 <LinearLayout
 android:orientation="horizontal"
@@ -30,18 +35,21 @@ android:layout_marginTop="5dp">
 <TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:gravity="center_horizontal"
 android:textAppearance="?android:attr/textAppearanceLarge"
-android:text="firstname : "
-android:layout_weight=".5"
-android:id="@+id/firstname_title_profile_page" />
+android:text="Firstname : "
+    android:id="@+id/firstname_title_profile_page"
+    android:layout_marginLeft="40dp"
+    android:textColor="#ffffffff"
+    android:paddingBottom="10dp" />
 <TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:textAppearance="?android:attr/textAppearanceLarge"
 android:text="name"
 android:layout_weight=".5"
-android:id="@+id/firstname_field_profile_page" />
+android:id="@+id/firstname_field_profile_page"
+    android:layout_marginLeft="10dp"
+    android:textColor="#ffffffff" />
 </LinearLayout>
 
 <LinearLayout
@@ -52,18 +60,21 @@ android:layout_marginTop="5dp">
 <TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:gravity="center_horizontal"
 android:textAppearance="?android:attr/textAppearanceLarge"
-android:text="lastname : "
-android:layout_weight=".5"
-android:id="@+id/lastname_title_profile_page" />
+android:text="Lastname : "
+    android:id="@+id/lastname_title_profile_page"
+    android:layout_marginLeft="40dp"
+    android:textColor="#ffffffff"
+    android:paddingBottom="10dp" />
 <TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:textAppearance="?android:attr/textAppearanceLarge"
 android:text="lastname"
 android:layout_weight=".5"
-android:id="@+id/lastname_field_profile_page" />
+android:id="@+id/lastname_field_profile_page"
+    android:layout_marginLeft="10dp"
+    android:textColor="#ffffffff" />
 </LinearLayout>
 
 <LinearLayout
@@ -74,18 +85,21 @@ android:layout_marginTop="5dp">
 <TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:gravity="center_horizontal"
 android:textAppearance="?android:attr/textAppearanceLarge"
 android:text="username : "
-android:layout_weight=".5"
-android:id="@+id/username_title_profile_page" />
+    android:id="@+id/username_title_profile_page"
+    android:layout_marginLeft="40dp"
+    android:textColor="#ffffffff"
+    android:paddingBottom="10dp" />
 <TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:textAppearance="?android:attr/textAppearanceLarge"
 android:text="username"
 android:layout_weight=".5"
-android:id="@+id/username_field_profile_page" />
+android:id="@+id/username_field_profile_page"
+    android:layout_marginLeft="10dp"
+    android:textColor="#ffffffff" />
 </LinearLayout>
 
 <LinearLayout
@@ -96,18 +110,23 @@ android:layout_marginTop="5dp">
 <TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:gravity="center_horizontal"
+
 android:textAppearance="?android:attr/textAppearanceLarge"
 android:text="emailAddress : "
-android:layout_weight=".5"
-android:id="@+id/emailAddress_title_profile_page" />
+    android:id="@+id/emailAddress_title_profile_page"
+    android:textAlignment="gravity"
+    android:layout_marginLeft="40dp"
+    android:textColor="#ffffffff"
+    android:paddingBottom="10dp" />
 <TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:textAppearance="?android:attr/textAppearanceLarge"
 android:text="email"
 android:layout_weight=".5"
-android:id="@+id/emailAddress_field_profile_page" />
+android:id="@+id/emailAddress_field_profile_page"
+    android:layout_marginLeft="10dp"
+    android:textColor="#ffffffff" />
 </LinearLayout>
 
 <LinearLayout
@@ -118,18 +137,21 @@ android:layout_marginTop="5dp">
 <TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:gravity="center_horizontal"
 android:textAppearance="?android:attr/textAppearanceLarge"
 android:text="phone number : "
-android:layout_weight=".5"
-android:id="@+id/phone_number_title_profile_page" />
+    android:id="@+id/phone_number_title_profile_page"
+    android:layout_marginLeft="40dp"
+    android:textColor="#ffffffff"
+    android:paddingBottom="10dp" />
 <TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:textAppearance="?android:attr/textAppearanceLarge"
 android:text="phone number"
 android:layout_weight=".5"
-android:id="@+id/phone_number_field_profile_page" />
+android:id="@+id/phone_number_field_profile_page"
+    android:layout_marginLeft="10dp"
+    android:textColor="#ffffffff" />
 </LinearLayout>
 
 <LinearLayout
@@ -140,18 +162,20 @@ android:layout_marginTop="5dp">
 <TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:gravity="center_horizontal"
 android:textAppearance="?android:attr/textAppearanceLarge"
 android:text="birthday : "
-android:layout_weight=".5"
-android:id="@+id/birthday_title_profile_page" />
+    android:id="@+id/birthday_title_profile_page"
+    android:layout_marginLeft="40dp"
+    android:textColor="#ffffffff" />
 <TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:textAppearance="?android:attr/textAppearanceLarge"
 android:text="birthday"
 android:layout_weight=".5"
-android:id="@+id/birthday_field_profile_page" />
+android:id="@+id/birthday_field_profile_page"
+    android:layout_marginLeft="10dp"
+    android:textColor="#ffffffff" />
 </LinearLayout>
 
 

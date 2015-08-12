@@ -26,15 +26,16 @@
             android:text="Create your profile"
             android:textSize="30dp"
             android:id="@+id/create_profile_message"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="left|center_horizontal"
+            android:layout_marginTop="40dp" />
 
         <EditText
-        android:paddingTop="30dp"
-        android:layout_width="match_parent"
+            android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/username_field_sign_up"
         android:hint="@string/username"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -91,8 +92,8 @@
         android:layout_gravity="center_horizontal" />
 
     <Button
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_width="283dp"
         android:layout_height="wrap_content"
         android:text="@string/sign_up"
         android:id="@+id/sign_up_button_sign_up"

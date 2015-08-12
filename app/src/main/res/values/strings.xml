@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Android_Registeration_Form</string>
+    <string name="app_name">Registration</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_question">Hi, please fill the fields, if you have not sign up yet, click sign up</string>
+    <string name="title_question">Sign in to your account</string>
     <string name="sign_in">sign in</string>
     <string name="sign_up">sign up</string>
     <string name="password">password</string>
