@@ -141,7 +141,17 @@ public class showNameActivity extends Activity {
                 dLayout.closeDrawers();
                 Bundle args = new Bundle();
                 args.putString("Menu", menu[position]);
-                Fragment detail = new ShowProfileFragment();
+                Fragment detail = null;
+                switch (position){
+                    case 0:
+                        detail = new EditProfileFragment();
+                        break;
+                    case 1:
+                        detail = new ShowProfileFragment();
+                        break;
+                    default:
+                        detail = new ShowProfileFragment();
+                }
                 detail.setArguments(args);
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.content_frame, detail).commit();
