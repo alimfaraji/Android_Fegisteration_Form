@@ -15,10 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class showNameActivity extends Activity {
+public class showNameActivity extends AppCompatActivity {
     /**
      * user will sign out after this amount of time
      */
@@ -123,6 +124,54 @@ public class showNameActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_name);
 
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+
+        final TextView timeLeft = (TextView)findViewById(R.id.timeLeft);
+        new CountDownTimer(showNameActivity_TIME_OUT, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                timeLeft.setText("seconds remaining: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                timeLeft.setText("done!");
+                Intent intent = new Intent(showNameActivity.this, MainActivity.class);
+                startActivity(intent);
+
+                // close this activity
+                finish();
+            }
+        }.start();
+
+//        Button button = (Button)findViewById(R.id.buttonTest);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+//
+//                      // This flag clears the called app from the activity stack, so users arrive in the expected
+//                      // place next time this application is restarted.
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+//
+//                        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+//                        startActivityForResult(intent, 0);
+//            }
+//
+//            public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+//                if (requestCode == 0) {
+//                    if (resultCode == RESULT_OK) {
+//                        //  The Intents Fairy has delivered us some data!
+//                        String contents = intent.getStringExtra("SCAN_RESULT");
+//                        String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+//                        // Handle successful scan
+//                    } else if (resultCode == RESULT_CANCELED) {
+//                        // Handle cancel
+//                    }
+//                }
+//            }
+//        });
+
         menu = new String[]{"Edit Profile","Show Profile","QR code","Contact Us"};
         dLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         dList = (ListView) findViewById(R.id.left_drawer);
@@ -150,14 +199,16 @@ public class showNameActivity extends Activity {
                         detail = new ShowProfileFragment();
                         break;
                     case 2:
-                        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-
-        // This flag clears the called app from the activity stack, so users arrive in the expected
-        // place next time this application is restarted.
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-
-        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-        startActivityForResult(intent, 0);
+//                        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+//
+//                      // This flag clears the called app from the activity stack, so users arrive in the expected
+//                      // place next time this application is restarted.
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+//
+//                        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+////                        startActivityForResult(intent, 0);
+                        Intent intent = new Intent(showNameActivity.this, MainActivity.class);
+                        startActivity(intent);
                         break;
                     default:
                         detail = new ShowProfileFragment();
