@@ -12,7 +12,7 @@ public class Member {
     String phoneNumber;
     String birthday;
 
-    public Member(){
+    public Member() {
 
     }
 
@@ -24,6 +24,12 @@ public class Member {
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.birthday = birthday;
+    }
+
+    static public Member getMemberFromCode(String code) {
+        String[] all = code.split(",");
+        Member member = new Member(all[0], all[1], all[2], all[3], all[4], all[5], all[6]);
+        return member;
     }
 
     public String getUsername() {
@@ -82,14 +88,8 @@ public class Member {
         this.emailAddress = emailAddress;
     }
 
-    public String generateCode(){
+    public String generateCode() {
         return username + "," + password + "," + firstname + "," + lastname + "," + emailAddress + "," + phoneNumber
                 + " , " + birthday;
-    }
-
-    static public Member getMemberFromCode(String code){
-        String[] all = code.split(",");
-        Member member = new Member(all[0], all[1], all[2], all[3], all[4], all[5], all[6]);
-        return member;
     }
 }

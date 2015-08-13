@@ -4,10 +4,17 @@
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:background="#ff4398c5"
    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
-    <include
-        android:id="@id/timeLeft"
-        layout="@layout/countdown_counter">
-    </include>
+        <include
+            android:id="@+id/timeLeft"
+            layout="@layout/countdown_counter">
+        </include>
+
+    </LinearLayout>
 
 </android.support.v7.widget.Toolbar>

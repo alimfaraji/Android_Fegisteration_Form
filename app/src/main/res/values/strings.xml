@@ -40,4 +40,21 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_show_barcode_content_fragment">ShowBarcodeContentFragment</string>
+
+    <string name="format_barcode">FORMAT</string>
+    <string name="contents_barcode">CONTENTS</string>
+
+    <string name="email_contact_us">alim.faraji@gmail.com</string>
+    <string name="phone_number_contact_us">09356385642</string>
+    <string name="subject_contact_us">contact us</string>
+    <string name="title_bar_chooser_contact_us">send Email</string>
+
+    <string name="saved_button_edit_profile">saved</string>
+    <string name="first_name_invalid_exception">you Should enter first name</string>
+    <string name="last_name_invalid_exception">you should enter last name</string>
+    <string name="email_address_invalid_exception">you should enter email address</string>
+    <string name="username_exists_exception">username exists, try another one</string>
+    <string name="username_invalid_exception">Invalid username</string>
+    <string name="password_invalid_exception">password is invalid</string>
 </resources>

@@ -1,16 +1,11 @@
 package com.example.hoco.android_fegisteration_form;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
-import android.widget.Toast;
-
-import java.util.Date;
-import android.os.Handler;
-import java.util.logging.LogRecord;
 
 public class SplashScreenActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 6000;

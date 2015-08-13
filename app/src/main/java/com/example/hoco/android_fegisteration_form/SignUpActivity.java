@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +26,45 @@ public class SignUpActivity extends AppCompatActivity {
     EditText usernameField, passwordField, firstNameField, lastNameField, emailAddressField, phoneNumberField, birthdayField;
     Button signUpButton;
     Member member = new Member();
+
+    public static boolean isValidBirthday(String s) {
+        return true;
+    }
+
+    public static boolean isValidPhoneNumber(String s) {
+        return true;
+    }
+
+    public static boolean isValidEmailAddress(String s) {
+        if (s == null || s == "" || s.length() < 1)
+            return false;
+        return true;
+    }
+
+    public static boolean isValidLastName(String s) {
+        if (s == null || s == "" || s.length() < 1)
+            return false;
+        return true;
+    }
+
+    public static boolean isValidFirstName(String s) {
+        if (s == null || s == "" || s.length() < 1)
+            return false;
+        return true;
+    }
+
+    public static boolean isValidUsername(String username) {
+        if (username == null || username == "" || username.length() < 1)
+            return false;
+        return true;
+    }
+
+    public static boolean isValidPassword(String password) {
+        if (password == null)
+            return false;
+        return password.length() >= 6;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,49 +76,49 @@ public class SignUpActivity extends AppCompatActivity {
         member.setUsername(intent.getStringExtra(getString(R.string.username)));
         member.setPassword(intent.getStringExtra(getString(R.string.password)));
 
-        usernameField = (EditText)findViewById(R.id.username_field_sign_up);
-        passwordField = (EditText)findViewById(R.id.password_field_sign_up);
-        firstNameField = (EditText)findViewById(R.id.first_name_sign_up);
-        lastNameField = (EditText)findViewById(R.id.last_name_sign_up);
-        emailAddressField = (EditText)findViewById(R.id.email_address_sign_up);
-        phoneNumberField = (EditText)findViewById(R.id.phone_number_sign_up);
-        birthdayField = (EditText)findViewById(R.id.birthday_sign_up);
+        usernameField = (EditText) findViewById(R.id.username_field_sign_up);
+        passwordField = (EditText) findViewById(R.id.password_field_sign_up);
+        firstNameField = (EditText) findViewById(R.id.first_name_sign_up);
+        lastNameField = (EditText) findViewById(R.id.last_name_sign_up);
+        emailAddressField = (EditText) findViewById(R.id.email_address_sign_up);
+        phoneNumberField = (EditText) findViewById(R.id.phone_number_sign_up);
+        birthdayField = (EditText) findViewById(R.id.birthday_sign_up);
 
         usernameField.setText(member.getUsername());
         passwordField.setText(member.getPassword());
     }
 
-    public void signUpAndLeaveThisActivity(View view){
-        try{
+    public void signUpAndLeaveThisActivity(View view) {
+        try {
             registerUser();
             goToShowNameActivity();
-        }catch(UsernameExistsException e){
-            usernameField.setError("username exists, try another one");
+        } catch (UsernameExistsException e) {
+            usernameField.setError(getString(R.string.username_exists_exception));
 //            usernameField.setText(null);
 //            userNameField.setHint("username");
 //            passwordField.setHint("password");
             usernameField.setTextColor(Color.RED);
 //            usernameField.setHintTextColor(Color.RED);
-        }catch (UsernameInvalidException e){
-            usernameField.setError("Invalid username");
+        } catch (UsernameInvalidException e) {
+            usernameField.setError(getString(R.string.username_invalid_exception));
             usernameField.setTextColor(Color.RED);
-        }catch (PasswordInvalidException e){
-            passwordField.setError("password is invalid");
+        } catch (PasswordInvalidException e) {
+            passwordField.setError(getString(R.string.password_invalid_exception));
             passwordField.setHintTextColor(Color.RED);
-        }catch (FirstNameInvalidException e){
-            firstNameField.setError("you Should enter first name");
+        } catch (FirstNameInvalidException e) {
+            firstNameField.setError(getString(R.string.first_name_invalid_exception));
             firstNameField.setHintTextColor(Color.RED);
-        }catch (LastNameInvalidException e){
-            lastNameField.setError("you should enter last name");
+        } catch (LastNameInvalidException e) {
+            lastNameField.setError(getString(R.string.last_name_invalid_exception));
             lastNameField.setHintTextColor(Color.RED);
-        }catch (EmailAddressInvalidException e){
-            emailAddressField.setError("you should enter email address");
+        } catch (EmailAddressInvalidException e) {
+            emailAddressField.setError(getString(R.string.email_address_invalid_exception));
             emailAddressField.setHintTextColor(Color.RED);
-        }catch (PhoneNumberInvalidException e){
+        } catch (PhoneNumberInvalidException e) {
 
-        }catch (BirthdayInvalidException e){
+        } catch (BirthdayInvalidException e) {
 
-        }finally {
+        } finally {
             passwordField.setText(null);
         }
     }
@@ -88,12 +127,12 @@ public class SignUpActivity extends AppCompatActivity {
         Intent intent = new Intent(SignUpActivity.this, showNameActivity.class);
         intent.putExtra(getString(R.string.logedInUsername), member.getUsername());
         startActivity(intent);
+        finish();
     }
 
     private void registerUser() throws UsernameExistsException, UsernameInvalidException, PasswordInvalidException
             , FirstNameInvalidException, LastNameInvalidException, EmailAddressInvalidException,
-            PhoneNumberInvalidException, BirthdayInvalidException
-    {
+            PhoneNumberInvalidException, BirthdayInvalidException {
         SharedPreferences shP = getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
         if (shP.contains(getString(R.string.username) + ":" + usernameField.getText().toString()))
             throw new UsernameExistsException();
@@ -126,44 +165,6 @@ public class SignUpActivity extends AppCompatActivity {
         editor = shP.edit();
         editor.putString(member.getUsername(), member.generateCode());
         editor.commit();
-    }
-
-    public static boolean isValidBirthday(String s) {
-        return true;
-    }
-
-    public static boolean isValidPhoneNumber(String s) {
-        return true;
-    }
-
-    public static boolean isValidEmailAddress(String s) {
-        if ( s== null || s == "" || s.length()<1)
-            return false;
-        return true;
-    }
-
-    public static boolean isValidLastName(String s) {
-        if ( s== null || s == "" || s.length()<1)
-            return false;
-        return true;
-    }
-
-    public static boolean isValidFirstName(String s) {
-        if ( s == null || s == "" || s.length() < 1)
-            return false;
-        return true;
-    }
-
-    public static boolean isValidUsername(String username){
-        if (username == null || username == "" || username.length()<1)
-            return false;
-        return true;
-    }
-
-    public static boolean isValidPassword(String password){
-        if(password == null )
-            return false;
-        return password.length() >= 6;
     }
 
     @Override
