@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class showNameActivity extends AppCompatActivity {
     /**
@@ -181,6 +182,7 @@ public class showNameActivity extends AppCompatActivity {
         dList.setAdapter(adapter);
         dList.setSelector(android.R.color.holo_blue_dark);
 
+
         dList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -190,7 +192,7 @@ public class showNameActivity extends AppCompatActivity {
                 dLayout.closeDrawers();
                 Bundle args = new Bundle();
                 args.putString("Menu", menu[position]);
-                Fragment detail = null;
+                Fragment detail = new ShowProfileFragment();
                 switch (position){
                     case 0:
                         detail = new EditProfileFragment();
@@ -199,16 +201,14 @@ public class showNameActivity extends AppCompatActivity {
                         detail = new ShowProfileFragment();
                         break;
                     case 2:
-//                        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-//
-//                      // This flag clears the called app from the activity stack, so users arrive in the expected
-//                      // place next time this application is restarted.
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-//
-//                        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-////                        startActivityForResult(intent, 0);
-                        Intent intent = new Intent(showNameActivity.this, MainActivity.class);
-                        startActivity(intent);
+                        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+
+                      // This flag clears the called app from the activity stack, so users arrive in the expected
+                      // place next time this application is restarted.
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+
+                        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+                        startActivityForResult(intent, 0);
                         break;
                     default:
                         detail = new ShowProfileFragment();
@@ -237,11 +237,63 @@ public class showNameActivity extends AppCompatActivity {
                 //  The Intents Fairy has delivered us some data!
                 String contents = intent.getStringExtra("SCAN_RESULT");
                 String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+                Toast.makeText(this, contents, Toast.LENGTH_LONG).show();
                 // Handle successful scan
             } else if (resultCode == RESULT_CANCELED) {
                 // Handle cancel
             }
         }
     }
+
+//    private class SlideMenuClickListener implements
+//            ListView.OnItemClickListener
+//    {
+//        @Override
+//        @TargetApi(11)
+//        public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+//        {
+//            displayView(position);
+//        }
+//    }
+//    @TargetApi(11)
+//    private void displayView(int position)
+//    {
+//
+//        Bundle args = new Bundle();
+//        Fragment detail = new ShowProfileFragment();
+//        args.putString("Menu", menu[1]);
+//
+//        switch (position)
+//        {
+//            case 0:
+//                //fragment = new HomeFragment();
+//                args.putString("Menu", menu[0]);
+//                detail = new EditProfileFragment();
+//                break;
+//            case 1:
+//                //fragment = new FindPeopleFragment();
+//                args.putString("Menu", menu[1]);
+//                detail = new ShowProfileFragment();
+//                break;
+//
+//            case 2:
+//                //fragment = new PhotosFragment();
+//                Intent intent2 = new Intent(this, MainActivity.class);
+//                startActivity(intent2);
+//                break;
+//
+//            default:
+//                break;
+//
+//        }
+//        detail.setArguments(args);
+//        FragmentManager fragmentManager = getFragmentManager();
+//        fragmentManager.beginTransaction().replace(R.id.content_frame, detail).commit();
+//
+//        dList.setItemChecked(position, true);
+//        dList.setSelection(position);
+//        setTitle(menu[position]);
+//        dLayout.closeDrawer(dList);
+//    }
 
 }
