@@ -28,7 +28,7 @@
     <string name="negative_dialog_button">cancel</string>
 
     <string name="passwordHint">type password here</string>
-    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="title_activity_splash_screen">Registration Form</string>
 
     <string name="login_time">login_time</string>
     <string name="title_activity_show_profile">ShowProfileActivity</string>

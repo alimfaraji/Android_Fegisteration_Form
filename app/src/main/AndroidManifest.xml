@@ -39,10 +39,6 @@
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up" >
         </activity>
-        <activity
-            android:name=".ShowBarcodeContentFragment"
-            android:label="@string/title_activity_show_barcode_content_fragment" >
-        </activity>
     </application>
 
 </manifest>
