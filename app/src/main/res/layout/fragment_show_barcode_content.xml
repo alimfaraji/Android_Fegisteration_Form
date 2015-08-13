@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
-        >
+        android:background="#ff70b3cd">
 
 
         <TextView
@@ -24,7 +24,8 @@
             android:textSize="30dp"
             android:textColor="@color/abc_primary_text_material_dark"
             android:id="@+id/barcode_title_barcodePage"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp" />
 
         <TextView
             android:layout_width="wrap_content"
