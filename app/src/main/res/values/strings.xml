@@ -53,7 +53,8 @@
     <string name="saved_button_edit_profile">Saved</string>
     <string name="first_name_invalid_exception">You Should enter first name</string>
     <string name="last_name_invalid_exception">You should enter last name</string>
-    <string name="email_address_invalid_exception">You should enter email address</string>
+    <string name="birthday_invalid_exception">Birthday is invalid</string>
+    <string name="email_address_invalid_exception">Email is invalid</string>
     <string name="username_exists_exception">Username exists, try another one</string>
     <string name="username_invalid_exception">Invalid username</string>
     <string name="password_invalid_exception">Password is invalid</string>

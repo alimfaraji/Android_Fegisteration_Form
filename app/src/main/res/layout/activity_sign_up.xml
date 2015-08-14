@@ -2,104 +2,104 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
+    android:background="#ffffff"
     android:orientation="vertical"
-    android:weightSum="1"
-    android:background="#ffffff">
+    android:weightSum="1">
 
     <include
         android:id="@+id/tool_bar"
-        layout="@layout/tool_bar"
-        ></include>
+        layout="@layout/tool_bar"></include>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+        android:background="#ffffff"
         android:orientation="vertical"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
-        android:weightSum="1"
-        android:background="#ffffff">
+        android:weightSum="1">
 
         <TextView
+            android:id="@+id/create_profile_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create your profile"
-            android:textSize="30dp"
-            android:id="@+id/create_profile_message"
             android:layout_gravity="left|center_horizontal"
-            android:layout_marginTop="40dp" />
+            android:layout_marginTop="40dp"
+            android:text="Create your profile"
+            android:textSize="30dp" />
 
         <EditText
+            android:id="@+id/username_field_sign_up"
             android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/username_field_sign_up"
-        android:hint="@string/username"
-        android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:hint="@string/username"
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/password_field_sign_up"
-        android:hint="@string/password"
-        android:layout_gravity="center_horizontal" />
+        <EditText
+            android:id="@+id/password_field_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="first name*"
-        android:ems="10"
-        android:id="@+id/first_name_sign_up"
-        android:layout_gravity="center_horizontal" />
+        <EditText
+            android:id="@+id/first_name_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:hint="first name*"
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="last name*"
-        android:ems="10"
-        android:id="@+id/last_name_sign_up"
-        android:layout_gravity="center_horizontal" />
+        <EditText
+            android:id="@+id/last_name_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:hint="last name*"
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="email address*"
-        android:ems="10"
-        android:id="@+id/email_address_sign_up"
-        android:layout_gravity="center_horizontal" />
+        <EditText
+            android:id="@+id/email_address_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:hint="email address*"
+            android:inputType="textEmailAddress" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:ems="10"
-        android:hint="phone number"
-        android:id="@+id/phone_number_sign_up"
-        android:layout_gravity="center_horizontal" />
+        <EditText
+            android:id="@+id/phone_number_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:hint="phone number"
+            android:inputType="phone" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:hint="birthday"
-        android:id="@+id/birthday_sign_up"
-        android:layout_gravity="center_horizontal" />
+        <EditText
+            android:id="@+id/birthday_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:hint="birthday"
+            android:inputType="date" />
 
-    <Button
-        android:layout_marginTop="20dp"
-        android:layout_width="283dp"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_up"
-        android:id="@+id/sign_up_button_sign_up"
-        android:onClick="signUpAndLeaveThisActivity"
-        android:layout_gravity="center_horizontal" />
+        <Button
+            android:id="@+id/sign_up_button_sign_up"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:onClick="signUpAndLeaveThisActivity"
+            android:text="@string/sign_up" />
 
-        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

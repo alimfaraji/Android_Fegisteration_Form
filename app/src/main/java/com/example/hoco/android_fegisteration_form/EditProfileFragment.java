@@ -54,7 +54,30 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         phoneNumberField.setText(member.getPhoneNumber());
         birthdayField.setText(member.getBirthday());
 
+        if (phoneNumberField.getText().toString().equals(" "))
+            phoneNumberField.setText(null);
+
+        if(birthdayField.getText().toString().equals(" "))
+            birthdayField.setText(null);
+
         return view;
+    }
+    private void colorAllExcept(EditText field) {
+        firstNameField.setTextColor(Color.BLACK);
+        lastNameField.setTextColor(Color.BLACK);
+        emailAddressField.setTextColor(Color.BLACK);
+        phoneNumberField.setTextColor(Color.BLACK);
+        birthdayField.setTextColor(Color.BLACK);
+
+        field.setTextColor(Color.RED);
+
+        firstNameField.setHintTextColor(Color.BLACK);
+        lastNameField.setHintTextColor(Color.BLACK);
+        emailAddressField.setHintTextColor(Color.BLACK);
+        phoneNumberField.setHintTextColor(Color.BLACK);
+        birthdayField.setHintTextColor(Color.BLACK);
+
+        field.setHintTextColor(Color.RED);
     }
 
     public void onClick(View view) {
@@ -64,17 +87,22 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             goToShowProfileFragment();
         } catch (FirstNameInvalidException e) {
             firstNameField.setError(getString(R.string.first_name_invalid_exception));
-            firstNameField.setHintTextColor(Color.RED);
+//            firstNameField.setHintTextColor(Color.RED);
+            colorAllExcept(firstNameField);
         } catch (LastNameInvalidException e) {
             lastNameField.setError(getString(R.string.last_name_invalid_exception));
-            lastNameField.setHintTextColor(Color.RED);
+//            lastNameField.setHintTextColor(Color.RED);
+            colorAllExcept(lastNameField);
         } catch (EmailAddressInvalidException e) {
             emailAddressField.setError(getString(R.string.email_address_invalid_exception));
-            emailAddressField.setHintTextColor(Color.RED);
+//            emailAddressField.setHintTextColor(Color.RED);
+            colorAllExcept(emailAddressField);
         } catch (PhoneNumberInvalidException e) {
 
         } catch (BirthdayInvalidException e) {
-
+            birthdayField.setError(getString(R.string.birthday_invalid_exception));
+//            Toast.makeText(getActivity(),getString(R.string.birthday_invalid_exception), Toast.LENGTH_LONG ).show();
+            colorAllExcept(birthdayField);
         }
     }
 
