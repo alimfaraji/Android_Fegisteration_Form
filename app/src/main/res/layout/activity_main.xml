@@ -73,5 +73,12 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50px"
+        android:id="@+id/username_or_password_wrong_error"
+        android:layout_gravity="center_horizontal" />
+
 
 </LinearLayout>

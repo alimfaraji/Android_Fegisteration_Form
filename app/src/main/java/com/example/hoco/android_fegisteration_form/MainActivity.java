@@ -3,19 +3,26 @@ package com.example.hoco.android_fegisteration_form;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hoco.android_fegisteration_form.exceptions.PasswordInvalidException;
+import com.example.hoco.android_fegisteration_form.exceptions.PasswordOrUsernameWrongException;
 import com.example.hoco.android_fegisteration_form.exceptions.UsernameExistsException;
 import com.example.hoco.android_fegisteration_form.exceptions.UsernameInvalidException;
+import com.example.hoco.android_fegisteration_form.exceptions.UsernameNotFoundException;
+
+import org.w3c.dom.Text;
 
 /**
  * a simple registration form, contains a textView ( asks user if he wants to signIn or singUp ),
@@ -72,15 +79,47 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String username = userNameField.getText().toString();
                 String password = passwordField.getText().toString();
-                if (isValidUserAndPassForSignIn(username, password)) {
+                try {
+                    isValidUserAndPassForSignIn(username, password);
                     updateLastLogin(username);
                     startShowNameActivity(username);
-                } else {
-                    Toast.makeText(MainActivity.this, R.string.sign_in_message_fail, Toast.LENGTH_SHORT).show();
+                } catch (UsernameNotFoundException e) {
+                    userNameField.setTextColor(Color.RED);
+                    showError(getString(R.string.username_not_found_exception), (TextView) findViewById(R.id.username_or_password_wrong_error));
+                } catch (PasswordOrUsernameWrongException e) {
+                    passwordField.setTextColor(Color.RED);
+                    showError(getString(R.string.username_or_password_wrong_exception), (TextView) findViewById(R.id.username_or_password_wrong_error));
                 }
             }
         });
 
+    }
+
+    private void showError(String s, final TextView v){
+//        TextView showUserOrPassError = (TextView)findViewById(R.id.username_or_password_wrong_error);
+        v.setText(s);
+        v.setTextColor(Color.RED);
+
+        final Animation out = new AlphaAnimation(1.0f, 0.0f);
+        out.setDuration(5000);
+        v.startAnimation(out);
+//        v.setText(null);
+        out.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                v.setText(null);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
     private void goToSignUpActivity(String username, String password) {
@@ -131,14 +170,14 @@ public class MainActivity extends AppCompatActivity {
      * @param password password
      * @return if username with this password exists
      */
-    private boolean isValidUserAndPassForSignIn(String username, String password) {
+    private void isValidUserAndPassForSignIn(String username, String password) throws PasswordOrUsernameWrongException, UsernameNotFoundException{
         SharedPreferences shP = getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE);
         if (!shP.contains(getString(R.string.username) + ":" + username))
-            return false;
+            throw new UsernameNotFoundException();
         String rightPassword = shP.getString(getString(R.string.username) + ":" + username, getString(R.string.invalid_pass));
-//        Log.d("right password is : ", rightPassword);
-//        Log.d("and you typed : ", password);
-        return rightPassword.equals(password);
+        if (!rightPassword.equals(password))
+            throw new PasswordOrUsernameWrongException();
+        return;
     }
 
     @Override
